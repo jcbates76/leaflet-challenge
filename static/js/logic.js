@@ -23,12 +23,14 @@ d3.json(link).then((data) => {
         let lat = data['features'][i]['geometry']['coordinates'][1];
         let lng = data['features'][i]['geometry']['coordinates'][0];
         let depth = data['features'][i]['geometry']['coordinates'][2];
+        let mag = data['features'][i]['properties']['mag']
+        let magradius = 50000 * mag
         L.circle ([lat, lng], {
             weight: 0.25,
             color: "black",
-            fillColor: "puprle",
-            fillOpacity: 0.75,
-            radius: 500000
+            fillColor: "pink",
+            fillOpacity: 0.50,
+            radius: magradius
         }).addTo(myMap);
     };
 });
